@@ -1,0 +1,8 @@
+{
+    "version": 1,
+    "name": "celeb-doa",
+    "builds": [{ "src": "celeb-doa/package.json", "use": "@now/static-build", "config": {"distDir": "build"} }],
+    "routes": [
+        { "src": "/(.*)", "dest": "celeb-doa/$1" }
+    ]
+}
