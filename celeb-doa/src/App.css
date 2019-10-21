@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Fascinate+Inline&display=swap');
+
+body{
+  background-color: #FC9393;
+}
+
 .App {
   text-align: center;
 }
@@ -17,6 +23,6 @@
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
-}
+/* h1, h3{
+  font-family: 'Fascinate Inline', cursive;
+} */

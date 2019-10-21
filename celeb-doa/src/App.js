@@ -1,11 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+
+import Body from './components/index';
 
 function App() {
   return (
     <div className="App">
-    <h3> Celebrity DEAD or ALIVE</h3>
+    <Body/>
     </div>
   );
 }
