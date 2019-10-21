@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { registerUser } from '../actions';
+import { connect } from 'react-redux';
 
 const SignUp = (props) =>{
 
@@ -18,7 +19,8 @@ const SignUp = (props) =>{
     }
 
     const handleChange = e =>{
-        setRegister({...register, [e.target.name]: [e.target.value]})
+        console.log(e.target.value)
+        setRegister({...register, [e.target.name]: e.target.value})
     }
 
 
@@ -32,6 +34,7 @@ const SignUp = (props) =>{
                     placeholder='Username'
                     value={register.username}
                     onChange={handleChange}
+                    name="username"
                 />
                 <input
                     className='register'
@@ -39,6 +42,7 @@ const SignUp = (props) =>{
                     placeholder='Password'
                     value={register.password}
                     onChange={handleChange}
+                    name="password"
                 />
                 <button type='submit'>Sign Up</button>
             </form>
@@ -47,4 +51,14 @@ const SignUp = (props) =>{
     )
 }
 
-export default SignUp;
+const mapStateToProps = state => {
+    return {
+        registerData: state.registerData
+    }
+}
+
+
+export default connect(
+    mapStateToProps, 
+    {registerUser}
+)(SignUp);

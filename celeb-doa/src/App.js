@@ -9,7 +9,10 @@ import Body from './components/index';
 function App() {
   return (
     <div className="App">
-    <Body/>
+      
+       
+        <Body/>
+      
      </div>
   );
 }
