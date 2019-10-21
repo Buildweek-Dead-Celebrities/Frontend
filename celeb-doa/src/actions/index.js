@@ -1,4 +1,5 @@
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import axios from 'axios';
 
 // exports for login - post request
 export const START_LOGIN = "START_LOGIN";
