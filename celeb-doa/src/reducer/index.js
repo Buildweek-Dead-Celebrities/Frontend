@@ -1,5 +1,5 @@
 const initialState = {
-    catPics: [],
+    quizThing: [],
     isFetching: false,
     error: ""
   };
