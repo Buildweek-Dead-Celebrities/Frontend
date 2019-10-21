@@ -1,5 +1,5 @@
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import axios from 'axios';
+import axios from "axios";
 
 // exports for login - post request
 export const START_LOGIN = "START_LOGIN";
@@ -46,11 +46,11 @@ export const loginUser = loginInfo => {
   return dispatch => {
     dispatch({ type: START_LOGIN });
     axiosWithAuth()
-      .post("/api/login", loginInfo)
+      .post("/login", loginInfo)
       .then(response =>
         dispatch(
-          { type: LOGIN_SUCCESS, payload: response.data.payload },
-          localStorage.setItem("token", response.data.payload)
+          { type: LOGIN_SUCCESS, payload: response.data},
+          localStorage.setItem("token", response.data.token)
         )
       )
       .catch(error =>
