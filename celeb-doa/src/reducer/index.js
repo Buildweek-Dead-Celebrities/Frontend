@@ -1,4 +1,5 @@
 const initialState = {
+    loginData: {},
     quizThing: [],
     isFetching: false,
     error: ""
@@ -7,6 +8,8 @@ const initialState = {
   //reducer takes in :state = initialState, action
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+
+
 
         default:
             return state;
