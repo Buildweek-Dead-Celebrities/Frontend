@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { loginUser } from "../actions";
+import { connect } from "react-redux";
 
 const Login = props => {
   const [login, setLogin] = useState({ username: "", password: "" });
@@ -37,4 +38,13 @@ const Login = props => {
   );
 };
 
-export default Login;
+const mapStateToProps = state => {
+    return {
+        loginData: state.loginData
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    { loginUser }
+)(Login);
