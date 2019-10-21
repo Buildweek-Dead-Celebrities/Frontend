@@ -57,3 +57,19 @@ export const loginUser = loginInfo => {
       );
   };
 };
+
+//post request for registrate user
+export const registerUser = registerInfo => {
+  return dispatch => {
+    dispatch({ type: START_REGISTERING });
+    axios
+    .post("https://celeb-death-status.herokuapp.com/api/register", registerInfo)
+    .then(response =>
+      dispatch(
+        { type: REGISTRATION_SUCCESS, payload: response.data}
+      )
+    )
+    .catch(error =>
+      dispatch({ type: REGISTRATION_FAILURE, payload: error.response }))
+  }
+}
