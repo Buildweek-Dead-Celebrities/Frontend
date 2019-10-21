@@ -1,4 +1,5 @@
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import axios from 'axios';
 
 // exports for login - post request
 export const START_LOGIN = "START_LOGIN";
@@ -57,3 +58,19 @@ export const loginUser = loginInfo => {
       );
   };
 };
+
+//post request for registrate user
+export const registerUser = registerInfo => {
+  return dispatch => {
+    dispatch({ type: START_REGISTERING });
+    axios
+    .post("https://celeb-death-status.herokuapp.com/api/register", registerInfo)
+    .then(response =>
+      dispatch(
+        { type: REGISTRATION_SUCCESS, payload: response.data}
+      )
+    )
+    .catch(error =>
+      dispatch({ type: REGISTRATION_FAILURE, payload: error.response }))
+  }
+}
