@@ -4,9 +4,7 @@ import { START_LOGIN,
   START_REGISTERING, 
   REGISTRATION_SUCCESS, 
   REGISTRATION_FAILURE, 
-  START_DELETION_SCORE, 
-  DELETION_SCORE_SUCCESS, 
-  DELETION_SCORE_FAILURE, 
+  CELEB_DELETE, 
   START_QUIZ, 
   QUIZ_SUCCESS, 
   QUIZ_FAILURE,
@@ -77,25 +75,25 @@ const reducer = (state = initialState, action) => {
           isFetching: false
         }
 
-      case START_DELETION_SCORE:
+      case CELEB_DELETE:
         return {
           ...state,
           isFetching: true,
           error: ''
         }
 
-      case DELETION_SCORE_SUCCESS:
-        return {
-          ...state,
-          quizScore: action.payload
-        }
+      // case DELETION_SCORE_SUCCESS:
+      //   return {
+      //     ...state,
+      //     quizScore: action.payload
+      //   }
       
-      case DELETION_SCORE_FAILURE:
-        return {
-          ...state,
-          error: action.payload,
-          isFetching: false
-        }
+      // case DELETION_SCORE_FAILURE:
+      //   return {
+      //     ...state,
+      //     error: action.payload,
+      //     isFetching: false
+      //   }
 
       case START_CELEBRITY:
         return {
