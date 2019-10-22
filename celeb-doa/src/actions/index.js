@@ -74,3 +74,19 @@ export const registerUser = registerInfo => {
       dispatch({ type: REGISTRATION_FAILURE, payload: error.response }))
   }
 }
+
+// this is the get request for celebrity data
+export const getCelebrity = celeb => {
+  return dispatch => {
+    dispatch({ type: START_CELEBRITY });
+    axios
+    .get('https://celeb-death-status.herokuapp.com/api/celebs', celeb)
+    .then(response => 
+      dispatch(
+        {type: CELEBRITY_SUCCESS, payload: response.data}
+      )
+    )
+    .catch(error =>
+      dispatch({ type: CELEBRITY_FAILURE, payload: error.response}))
+  }
+}
