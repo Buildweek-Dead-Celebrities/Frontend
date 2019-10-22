@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 const SignUp = (props) =>{
 
+
+
     const [register, setRegister] = useState({
         username: '',
         password: ''
@@ -25,27 +27,40 @@ const SignUp = (props) =>{
 
 
     return(
-        <div>
+        <div className='pink'>
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    className='register'
-                    type='text'
-                    placeholder='Username'
-                    value={register.username}
-                    onChange={handleChange}
-                    name="username"
-                />
-                <input
-                    className='register'
-                    type='password'
-                    placeholder='Password'
-                    value={register.password}
-                    onChange={handleChange}
-                    name="password"
-                />
-                <button type='submit'>Sign Up</button>
-            </form>
+            <div className='form'>
+
+                <h2 className='sign-up' >Sing Up</h2>
+
+                <form  className='sign-up-form' onSubmit={handleSubmit}>
+                    <input
+                        className='sign-up-input'
+                        type='text'
+                        placeholder='Username'
+                        value={register.username}
+                        onChange={handleChange}
+                        name="username"
+                    />
+
+                    <br/>
+
+                    <input
+                        className='sign-up-input'
+                        type='password'
+                        placeholder='Password'
+                        value={register.password}
+                        onChange={handleChange}
+                        name="password"
+                    />
+
+                    <br/>
+
+                    <button type='submit' className='sign-up-btn'>Submit</button>
+                </form>
+
+            </div>
+
             
         </div>
     )
