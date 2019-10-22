@@ -45,12 +45,13 @@ export const PASSWORD_FAILURE = "PASSWORD_FAILURE";
 export const loginUser = loginInfo => {
   return dispatch => {
     dispatch({ type: START_LOGIN });
-    axiosWithAuth()
-      .post("/login", loginInfo)
+    return axios
+      .post("https://celeb-death-status.herokuapp.com/api/login", loginInfo)
       .then(response =>
         dispatch(
           { type: LOGIN_SUCCESS, payload: response.data},
-          localStorage.setItem("token", response.data.token)
+          localStorage.setItem("token", response.data.token),
+          
         )
       )
       .catch(error =>
