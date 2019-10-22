@@ -24,6 +24,7 @@ const initialState = {
     loginData: {},
     registerData: {},
     quizScore: [],
+    message: "",
     celeb: [],
     isFetching: false,
     error: ""
@@ -45,7 +46,8 @@ const reducer = (state = initialState, action) => {
           ...state,
           isFetching: false,
           error: '',
-          loginData: action.payload
+          loginData: action.payload,
+          message: action.payload.message
         }
 
       case LOGIN_FAILURE:
