@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Fascinate+Inline&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Catamaran&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
 
 body{
   background-color: #FC9393;
@@ -23,6 +25,65 @@ body{
   color: white;
 }
 
-/* h1, h3{
+
+/****************** Nav Styling */
+.title{
   font-family: 'Fascinate Inline', cursive;
-} */
+  color: white;
+  margin: 0 4% 0;
+}
+
+.link{
+  color: white;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: 800;
+  font-family: 'Catamaran', sans-serif;
+}
+
+/*************** Sing up form Styling */
+.pink{
+  background-color: #EC6C6C;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.sign-up{
+  font-family: 'Fascinate Inline', cursive;
+  color: white;
+  background-color: #AC3C3C;
+  display: inline-block;
+  font-size: 3.3rem;
+  padding: 36px 94px;
+  border-radius: 50px;
+
+}
+
+.form{
+  background-color: #DB6B6B;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.sign-up-input{
+  border: none;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+  margin: 30px auto ;
+  padding: 8px 0 ;
+  font-size: 2rem;
+  border-radius: 30px;
+  outline: none;
+}
+
+
+.sign-up-btn{
+  background-color: #AC3C3C;
+  border: 1px solid #AC3C3C;
+  color: white;
+  font-family: 'Fascinate Inline', cursive;
+  font-size: 1.8rem;
+  padding: 11px 32px;
+  outline: none;
+  margin-bottom: 98px;
+}

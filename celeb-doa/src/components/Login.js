@@ -17,6 +17,9 @@ const Login = props => {
 
   return (
     <div>
+
+      <h2 className='login'>Login</h2>
+
       <form onSubmit={handleSubmit}>
         <input
           className="loginForm"
@@ -29,6 +32,7 @@ const Login = props => {
         <input className="loginForm" 
         type="password" 
         name="password" 
+        placeholder='password'
         value={login.password} 
         onChange={handleChange} 
         />
