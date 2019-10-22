@@ -12,10 +12,10 @@ import reducer from './reducer';
 //Redux-thunk
 import thunk from 'redux-thunk';
 //Redux Logger
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 //------------------------------------------------------------------------------------------------------
 
-const store = createStore(reducer, applyMiddleware(thunk, logger))
+const store = createStore(reducer, applyMiddleware(thunk))
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 //------------------------------------------------------------------------------------------------------
