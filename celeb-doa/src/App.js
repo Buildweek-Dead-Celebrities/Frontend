@@ -2,12 +2,13 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Link, Route, withRouter } from "react-router-dom";
 import Login from "./components/Login";
-import SignUp from './components/SignUp';
+import SignUp from "./components/SignUp";
 import Body from "./components/index";
 import PrivateLoginRoute from './components/PrivateLoginRoute';
 import Dashboard from './components/Dashboard';
 import "./App.css";
 
+import CelebrityList from "./components/CelebrityList";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
 
         <PrivateLoginRoute exact path='/dashboard' component={Dashboard}/>
         <Body />
+        {/* Will need to make the CelebrityList path a protected route */}
+        <Route path="/celebrity-list" component={CelebrityList} />
       </div>
     </Router>
   );
