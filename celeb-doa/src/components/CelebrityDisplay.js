@@ -6,7 +6,7 @@ const CelebrityDisplay = props => {
 
   const deleteCeleb = () => {
     axiosWithAuth()
-    .delete(`http://celeb-death-status.herokuapp.com/api/protected/celebs/${props.celeb.id}`)
+    .delete(`https://cors-anywhere.herokuapp.com/http://celeb-death-status.herokuapp.com/api/protected/celebs/${props.celeb.id}`)
     .then(response => {
       console.log("Delete was successful", response)
       // props.history.push(`/celebrity-list`)
