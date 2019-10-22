@@ -16,28 +16,40 @@ const Login = props => {
   };
 
   return (
-    <div>
+    <div className='pink'>
 
-      <h2 className='login'>Login</h2>
+      <div className='form'>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          className="loginForm"
-          type="text"
-          name="username"
-          placeholder="name"
-          value={login.username}
-          onChange={handleChange}
-        />
-        <input className="loginForm" 
-        type="password" 
-        name="password" 
-        placeholder='password'
-        value={login.password} 
-        onChange={handleChange} 
-        />
-        <button type="submit">Submit</button>
-      </form>
+        <h2 className='login'>Login</h2>
+
+        <form onSubmit={handleSubmit}>
+          <input
+            className="loginForm"
+            type="text"
+            name="username"
+            placeholder="Name"
+            value={login.username}
+            onChange={handleChange}
+          />
+
+          <br/>
+
+          <input 
+            className="loginForm" 
+            type="password" 
+            name="password" 
+            placeholder='Password'
+            value={login.password} 
+            onChange={handleChange} 
+          />
+
+          <br/>
+
+          <button type="submit" className='login-btn'>Submit</button>
+        </form>
+
+      </div>
+
     </div>
   );
 };

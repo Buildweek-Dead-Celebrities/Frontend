@@ -11,17 +11,17 @@ const Time = () => {
         color: ${time <= 50 ? 'red' : 'green' };
     `
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     if(time === 0) return;
+        if(time === 0) return;
 
-    //     const countDown = setInterval(() => {
-    //         setTime(time - 1);
-    //     }, 1000);
+        const countDown = setInterval(() => {
+            setTime(time - 1);
+        }, 1000);
 
-    //     return () => clearInterval(countDown);
+        return () => clearInterval(countDown);
 
-    // },[time])
+    },[time])
 
 
     return(
