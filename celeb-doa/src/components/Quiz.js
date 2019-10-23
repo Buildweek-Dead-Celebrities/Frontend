@@ -50,11 +50,12 @@ const Quiz = props => {
     randomCeleb();
   };
 
-  if ( click === 2 || score === 2 ){
+  if ( click === 2 || score === 2 || Number(props.count) === 1){
       // this would be the put request to push score to user
       // pop up modal to display end score
       console.log("this is from clicking - quiz has ended")
       props.history.push("/dashboard")
+      props.setCount(150);
   }
 
   const handleChanges = e => {
@@ -74,7 +75,7 @@ const Quiz = props => {
       <button name="guess" value="Dead" onClick={handleChanges}>
         Dead
       </button>
-      <button onClick={check} onClick={() => setClick(click + 1)}>Check</button>
+      <button onClick={check} >Check</button>
     </div>
   );
 };
