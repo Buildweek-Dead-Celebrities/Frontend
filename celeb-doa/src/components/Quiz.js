@@ -5,7 +5,8 @@ import { withRouter } from "react-router-dom";
 const Quiz = props => {
   const [celebs, setCelebs] = useState([]);
   const [celeb, setCeleb] = useState({});
-  const [score, setScore] = useState(1);
+  const [score, setScore] = useState(0);
+  const [guess, setGuess] = useState();
 
   // currently have a list 80 celebrities, each celebrity has a unique ID
   // creating a random id function, math.random 0/1-80 -- setting max/min
@@ -23,65 +24,50 @@ const Quiz = props => {
     axios
       .get("https://celeb-death-status.herokuapp.com/api/celebs/")
       .then(response => {
-        setCelebs(response.data)
-        setCeleb(response.data[random])
-      }) 
-        
+        setCelebs(response.data);
+        setCeleb(response.data[random]);
+      })
       .catch(error => console.log(error));
   }, []);
 
+
   const randomCeleb = () => {
     const random = Math.floor(Math.random() * 80);
-    setCeleb(celebs[random])
-  }
+    setCeleb(celebs[random]);
+  };
 
-  const isAlive = () => {
-    console.log("onClick for Dead", score);
-    if (`${celebs.id}` && `${celebs.dead}` === "false") {
-      console.log(props)
-      return setScore(score + 1);
-    } else if(`${celebs.id}` && `${celebs.dead}` === "true"){
-      return setScore(score + 0);
+  const check = () => {
+    if (celeb.dead === "true" && guess.guess === "Dead") {
+      setScore(score + 1);
+    } else if (celeb.dead === "false" && guess.guess === "Alive") {
+      setScore(score + 1);
     } else {
-      props.history.push('/quiz')
+      console.log("WRONG");
     }
-    randomCeleb()
-  }
-
-  const isDead = () => {
-    console.log("onClick for Dead", score);
-    if (`${celebs.id}` && `${celebs.dead}` === "true") {
-      console.log(props)
-      return setScore(score + 1);
-    } else if(`${celebs.id}` && `${celebs.dead}` === "false"){
-      return setScore(score + 0);
-    } else {
-      props.history.push('/quiz')
-    }
-    randomCeleb()
-  }
-
+    randomCeleb();
+  };
+  const handleChanges = e => {
+    setGuess({ [e.target.name]: e.target.value });
+  };
   return (
     <div>
       <div key={celeb.id}>
+        <h1>{score}</h1>
         <h1>{celeb.name}</h1>
-        <h4>{celeb.info}</h4>
         <img src={celeb.imageurl} />
+        <h4>{celeb.info}</h4>
       </div>
-
-      <button
-        onClick={isAlive}
-      >
+      <button onClick={handleChanges} name="guess" value="Alive">
         Alive
       </button>
-      <button
-        onClick={isDead}
-      >
+      <button name="guess" value="Dead" onClick={handleChanges}>
         Dead
       </button>
+      <button onClick={check}>Check</button>
     </div>
   );
 };
+export default withRouter(Quiz);
 
 // useEffect(() => {
 //     axios
@@ -104,4 +90,3 @@ const Quiz = props => {
 //     )
 // }
 
-export default withRouter(Quiz);
