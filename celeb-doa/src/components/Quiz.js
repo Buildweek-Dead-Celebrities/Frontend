@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 const Quiz = props => {
   const [celebs, setCelebs] = useState([]);
+  const [celeb, setCeleb] = useState({});
   const [score, setScore] = useState(1);
 
   // currently have a list 80 celebrities, each celebrity has a unique ID
@@ -17,44 +19,63 @@ const Quiz = props => {
   // Button stores score + 1 or 0 depending if true/false
   // If user is signed in, put request for score -- /users/:id
   useEffect(() => {
+    const random = Math.floor(Math.random() * 80);
     axios
       .get("https://celeb-death-status.herokuapp.com/api/celebs/")
       .then(response => {
-        const random = Math.floor(Math.random() * 80);
-        setCelebs(response.data[random]);
-      })
+        setCelebs(response.data)
+        setCeleb(response.data[random])
+      }) 
+        
       .catch(error => console.log(error));
   }, []);
 
+  const randomCeleb = () => {
+    const random = Math.floor(Math.random() * 80);
+    setCeleb(celebs[random])
+  }
+
+  const isAlive = () => {
+    console.log("onClick for Dead", score);
+    if (`${celebs.id}` && `${celebs.dead}` === "false") {
+      console.log(props)
+      return setScore(score + 1);
+    } else if(`${celebs.id}` && `${celebs.dead}` === "true"){
+      return setScore(score + 0);
+    } else {
+      props.history.push('/quiz')
+    }
+    randomCeleb()
+  }
+
+  const isDead = () => {
+    console.log("onClick for Dead", score);
+    if (`${celebs.id}` && `${celebs.dead}` === "true") {
+      console.log(props)
+      return setScore(score + 1);
+    } else if(`${celebs.id}` && `${celebs.dead}` === "false"){
+      return setScore(score + 0);
+    } else {
+      props.history.push('/quiz')
+    }
+    randomCeleb()
+  }
+
   return (
     <div>
-      <div key={celebs.id}>
-        <h1>{celebs.name}</h1>
-        <h4>{celebs.info}</h4>
-        <img src={celebs.imageurl} />
+      <div key={celeb.id}>
+        <h1>{celeb.name}</h1>
+        <h4>{celeb.info}</h4>
+        <img src={celeb.imageurl} />
       </div>
+
       <button
-        onClick={() => {
-          // Check withRouter(gainst {celebs.dead} === 'alive', if alive then score + 1
-          console.log("onClick for Alive", score);
-          if (`${celebs.id}` && `${celebs.dead}` === "false") {
-            return setScore(score + 1);
-          } else {
-            return setScore(score + 0);
-          }
-        }}
+        onClick={isAlive}
       >
         Alive
       </button>
       <button
-        onClick={() => {
-          console.log("onClick for Dead", score);
-          if (`${celebs.id}` && `${celebs.dead}` === "true") {
-            return setScore(score + 1);
-          } else {
-            return setScore(score + 0);
-          }
-        }}
+        onClick={isDead}
       >
         Dead
       </button>
@@ -83,4 +104,4 @@ const Quiz = props => {
 //     )
 // }
 
-export default Quiz;
+export default withRouter(Quiz);
