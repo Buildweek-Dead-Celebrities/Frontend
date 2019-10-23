@@ -7,6 +7,7 @@ const Quiz = props => {
   const [celeb, setCeleb] = useState({});
   const [score, setScore] = useState(0);
   const [guess, setGuess] = useState();
+  const [click, setClick] = useState(0);
 
   // currently have a list 80 celebrities, each celebrity has a unique ID
   // creating a random id function, math.random 0/1-80 -- setting max/min
@@ -38,14 +39,24 @@ const Quiz = props => {
 
   const check = () => {
     if (celeb.dead === "true" && guess.guess === "Dead") {
-      setScore(score + 1);
-    } else if (celeb.dead === "false" && guess.guess === "Alive") {
-      setScore(score + 1);
-    } else {
+        setScore(score + 1);
+    }
+    else if (celeb.dead === "false" && guess.guess === "Alive") {
+        setScore(score + 1);
+    }
+    else {
       console.log("WRONG");
     }
     randomCeleb();
   };
+
+  if ( click === 2 || score === 2 ){
+      // this would be the put request to push score to user
+      // pop up modal to display end score
+      console.log("this is from clicking - quiz has ended")
+      props.history.push("/dashboard")
+  }
+
   const handleChanges = e => {
     setGuess({ [e.target.name]: e.target.value });
   };
@@ -63,7 +74,7 @@ const Quiz = props => {
       <button name="guess" value="Dead" onClick={handleChanges}>
         Dead
       </button>
-      <button onClick={check}>Check</button>
+      <button onClick={check} onClick={() => setClick(click + 1)}>Check</button>
     </div>
   );
 };
