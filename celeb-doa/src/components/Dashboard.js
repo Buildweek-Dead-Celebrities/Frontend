@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import {Link} from 'react-router-dom';
 import { connect } from "react-redux";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; //CSS for Modal! 
@@ -35,6 +36,7 @@ const Dashboard = (props) => {
             <p> Score Cards will be Displayed here</p>
             <p> User can Also Delete their account from here.</p>
 
+            <button> <Link to='/celebrity-list'>Update Celebrity List</Link> </button><br/>
             
             <Button color="danger" onClick={toggle}>Delete My Account</Button>
             <Modal isOpen={modal} toggle={toggle}>
