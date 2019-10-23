@@ -32,7 +32,7 @@ const SignUp = (props) =>{
 
             <div className='form'>
 
-                <h2 className='sign-up' >Sing Up</h2>
+                <h2 className='sign-up' >Sign Up</h2>
 
                 <form  className='sign-up-form' onSubmit={handleSubmit}>
                     <input
