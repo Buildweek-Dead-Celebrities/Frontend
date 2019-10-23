@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { registerUser } from '../actions';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
 
 const SignUp = (props) =>{
 
@@ -13,7 +14,7 @@ const SignUp = (props) =>{
 
     const handleSubmit = e =>{
         e.preventDefault();
-        props.registerUser(register)
+        props.registerUser(register).then(()=> props.history.push('/login'))
         setRegister({
             username: '',
             password: ''
@@ -76,4 +77,4 @@ const mapStateToProps = state => {
 export default connect(
     mapStateToProps, 
     {registerUser}
-)(SignUp);
+)(withRouter(SignUp));

@@ -51,7 +51,7 @@ export const loginUser = loginInfo => {
         dispatch(
           { type: LOGIN_SUCCESS, payload: response.data},
           localStorage.setItem("token", response.data.token),
-          
+          localStorage.setItem('message', response.data.message)
         )
       )
       .catch(error =>
@@ -64,7 +64,7 @@ export const loginUser = loginInfo => {
 export const registerUser = registerInfo => {
   return dispatch => {
     dispatch({ type: START_REGISTERING });
-    axios
+    return axios
     .post("https://celeb-death-status.herokuapp.com/api/register", registerInfo)
     .then(response =>
       dispatch(
