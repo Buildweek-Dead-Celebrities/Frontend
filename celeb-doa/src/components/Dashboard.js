@@ -51,7 +51,7 @@ const Dashboard = (props) => {
 
 const mapStateToProps = state => {
     return {
-        data: state.registerData
+        data: state.loginData
     }
 }
 
