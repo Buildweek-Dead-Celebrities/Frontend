@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
-const Time = () => {
+const Time = (props) => {
 
     const count = 150;
-    const [time, setTime] = useState(count);
+    const [time, setTime] = useState(Number(props.countDown));
+
 
     const Timer = styled.h2`
         font-size: 3rem;
@@ -26,6 +27,8 @@ const Time = () => {
 
     },[time])
 
+
+
     if(time === 0){
         return(
             <div>
@@ -36,7 +39,7 @@ const Time = () => {
         
         return(
             <div>
-                <Timer>{time}</Timer>
+                <Timer onChange={props.count(time)}>{time}</Timer>
             </div>
         )
     }

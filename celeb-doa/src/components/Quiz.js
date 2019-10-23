@@ -73,12 +73,15 @@ const Quiz = props => {
     .catch( res => console.log(res))
   }
 
-  if ( click === 5 || score === 5 ){
+  if ( click === 5 || score === 5 || Number(props.count) === 1){
+
       // this would be the put request to push score to user
       // pop up modal to display end score
       scorePut();
       console.log("this is from clicking - quiz has ended")
-      // props.history.push("/dashboard")
+      props.history.push("/dashboard")
+      props.setCount(150);
+
   }
 
   const handleChanges = e => {
@@ -98,7 +101,8 @@ const Quiz = props => {
       <button name="guess" value="Dead" onClick={handleChanges}>
         Dead
       </button>
-      <button onClick={check}>Check</button>
+      <button onClick={check} >Check</button>
+
     </div>
   );
 };
