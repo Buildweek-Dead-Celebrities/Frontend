@@ -15,6 +15,7 @@ const Nav = (props) =>{
 
     const NavDiv = styled.div`
         background: #AC3C3C
+        padding: 1% 0;
     `
     const LinkDiv =styled.div`
         display: flex;
@@ -41,6 +42,7 @@ const Nav = (props) =>{
     */}
    
     return(
+
   localStorage.getItem('token') ?
   <NavDiv>
     <Center>
