@@ -26,3 +26,8 @@ body{
 /* h1, h3{
   font-family: 'Fascinate Inline', cursive;
 } */
+
+.navColor {
+  background: #AC3C3C;
+  color: white;
+}

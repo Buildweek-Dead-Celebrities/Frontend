@@ -13,6 +13,8 @@ import reducer from './reducer';
 import thunk from 'redux-thunk';
 //Redux Logger
 import logger from 'redux-logger';
+//importing reactstrap for Modal
+
 //------------------------------------------------------------------------------------------------------
 
 const store = createStore(reducer, applyMiddleware(thunk, logger))
