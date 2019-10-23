@@ -17,6 +17,8 @@ const Dashboard = (props) => {
         .catch(err=> console.log(err))
     }
 
+  
+
     const confirmationModal = (props) => {
         const {
             buttonLabel,
@@ -33,6 +35,7 @@ const Dashboard = (props) => {
             <p> Score Cards will be Displayed here</p>
             <p> User can Also Delete their account from here.</p>
 
+            
             <Button color="danger" onClick={toggle}>Delete My Account</Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Confirm Deletion</ModalHeader>
