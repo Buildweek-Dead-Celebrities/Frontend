@@ -51,7 +51,7 @@ const Nav = (props) =>{
         <h3 className='title'>Dead or Alive</h3>
       </div>
       <LinkDiv>
-        <NavLink to='/'>Quiz</NavLink>
+        <NavLink to='/quiz'>Quiz</NavLink>
         <NavLink to='/dashboard'>Dashboard</NavLink>
         <button onClick={()=> logout()}>Logout</button>{/* If user is signed in, a Logout Button will appear to Logout. Button was the only thing I could get to work? idk -b*/}
       </LinkDiv>
@@ -65,7 +65,7 @@ const Nav = (props) =>{
         <h3 className='title'>Dead or Alive</h3>
       </div>
       <LinkDiv>
-        <NavLink to='/'>Quiz</NavLink>
+        <NavLink to='/quiz'>Quiz</NavLink>
         <NavLink to='/sign-up'>Sign Up</NavLink> {/* If user is Logged in, SignUp dissappears and gets replaced w/ dashboard. -b*/}
         <NavLink to='/login'>Login</NavLink>
       </LinkDiv>

@@ -20,6 +20,7 @@ const CelebrityDisplay = props => {
     <div className="celebrity-info">
       <h1>{props.celeb.name}</h1>
       <p>Info: {props.celeb.info}</p>
+      <img src={props.celeb.imageurl} />
       <p>Dead or Alive?: {props.celeb.dead}</p>
       <button
         onClick={() => {
