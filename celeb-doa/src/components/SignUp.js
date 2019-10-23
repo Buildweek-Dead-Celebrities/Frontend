@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { registerUser } from '../actions';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
 
 const SignUp = (props) =>{
 
@@ -13,7 +14,7 @@ const SignUp = (props) =>{
 
     const handleSubmit = e =>{
         e.preventDefault();
-        props.registerUser(register)
+        props.registerUser(register).then(()=> props.history.push('/login'))
         setRegister({
             username: '',
             password: ''
@@ -31,7 +32,7 @@ const SignUp = (props) =>{
 
             <div className='form'>
 
-                <h2 className='sign-up' >Sing Up</h2>
+                <h2 className='sign-up' >Sign Up</h2>
 
                 <form  className='sign-up-form' onSubmit={handleSubmit}>
                     <input
@@ -76,4 +77,4 @@ const mapStateToProps = state => {
 export default connect(
     mapStateToProps, 
     {registerUser}
-)(SignUp);
+)(withRouter(SignUp));
