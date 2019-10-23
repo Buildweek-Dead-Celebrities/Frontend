@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { loginUser } from "../actions";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+
 
 
 const Login = props => {
@@ -12,8 +14,8 @@ const Login = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    props.loginUser(login);
-    //  props.history.push('/')
+    props.loginUser(login).then(()=> props.history.push('/dashboard'))
+    //  props.history.push('/dashboard')
     setLogin({ username: "", password: "" });
   };
 
@@ -49,4 +51,4 @@ const mapStateToProps = state => {
 export default connect(
     mapStateToProps,
     { loginUser }
-)(Login);
+)(withRouter(Login));

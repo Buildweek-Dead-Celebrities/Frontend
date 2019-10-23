@@ -30,6 +30,8 @@ const initialState = {
 
   //reducer takes in :state = initialState, action
 const reducer = (state = initialState, action) => {
+  console.log('login' ,initialState.loginData)
+  console.log('register', initialState.registerData)
     switch (action.type) {
 
       case START_LOGIN:

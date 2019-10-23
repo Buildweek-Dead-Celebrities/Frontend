@@ -64,7 +64,7 @@ export const loginUser = loginInfo => {
 export const registerUser = registerInfo => {
   return dispatch => {
     dispatch({ type: START_REGISTERING });
-    axios
+    return axios
     .post("https://celeb-death-status.herokuapp.com/api/register", registerInfo)
     .then(response =>
       dispatch(

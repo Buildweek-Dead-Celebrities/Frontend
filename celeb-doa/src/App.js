@@ -18,7 +18,8 @@ function App() {
         <Route exact path="/login" render={props =>{ return <Login {...props} />}} />
         <Route exact path="/sign-up" component={SignUp} />
 
-        <PrivateLoginRoute exact path='/dashboard' component={Dashboard}/>
+        <PrivateLoginRoute exact path='/dashboard/' component={Dashboard}/>
+        
         <Body />
         {/* Will need to make the CelebrityList path a protected route */}
         <Route path="/celebrity-list" component={CelebrityList} />
