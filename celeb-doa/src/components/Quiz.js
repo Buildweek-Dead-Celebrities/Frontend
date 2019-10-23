@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Quiz = props => {
   const [celebs, setCelebs] = useState([]);
@@ -50,9 +51,18 @@ const Quiz = props => {
     randomCeleb();
   };
 
+  const scorePut = () => {
+    axiosWithAuth()
+    .put(`/http://celeb-death-status.herokuapp.com/api/protected/users/${props.id}`)
+    .then( res => { console.log(res)
+    })
+    .catch( res => console.log(res))
+  }
+
   if ( click === 2 || score === 2 ){
       // this would be the put request to push score to user
       // pop up modal to display end score
+      scorePut();
       console.log("this is from clicking - quiz has ended")
       props.history.push("/dashboard")
   }
