@@ -9,6 +9,9 @@ const Time = () => {
     const Timer = styled.h2`
         font-size: 3rem;
         color: ${time <= 50 ? 'red' : 'green' };
+        background-color: white;
+        border-radius: 50px;
+        font-family: font-family: 'Catamaran', sans-serif;
     `
 
     useEffect(() => {
@@ -23,12 +26,21 @@ const Time = () => {
 
     },[time])
 
+    if(time === 0){
+        return(
+            <div>
+                <Timer>Time Out!</Timer>
+            </div>
+        )
+    }else{
+        
+        return(
+            <div>
+                <Timer>{time}</Timer>
+            </div>
+        )
+    }
 
-    return(
-        <div>
-            <Timer>{time}</Timer>
-        </div>
-    )
 }
 
 export default Time;

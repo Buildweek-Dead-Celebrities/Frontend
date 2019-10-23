@@ -19,9 +19,9 @@ function App() {
     <Router>
       <div className="App">
         <Nav />
+        <Route exact path='/' component={Time} />
         <Route exact path='/' render={() => <Quiz />} /> {/* The Home page of the app */}
         <Route path="/sign-up" component={SignUp} />{/* The Login page of the App */}
-        <Route exact path='/' component={Time} />
         <Route exact path="/login" render={props =>{ return <Login {...props} />}} />
         <PrivateLoginRoute exact path='/dashboard' component={Dashboard}/>
         {/* Will need to make the CelebrityList path a protected route */}

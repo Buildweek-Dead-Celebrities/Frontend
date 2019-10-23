@@ -7,6 +7,7 @@ const Nav = () =>{
 
     const NavDiv = styled.div`
         background: #AC3C3C
+        padding: 1% 0;
     `
     const LinkDiv =styled.div`
         display: flex;
@@ -29,10 +30,12 @@ const Nav = () =>{
 
             <Center>
 
-            <div>
-                <h1 className='title'>Celebrity?</h1>
-                <h3 className='title'>Dead or Alive</h3>
-            </div>
+            <NavLink to='/' className='link'>
+                <div>
+                    <h1 className='title'>Celebrity?</h1>
+                    <h3 className='title'>Dead or Alive</h3>
+                </div>
+            </NavLink>
             
             <LinkDiv>
                 <NavLink className='link' to='/'>Quiz</NavLink>
