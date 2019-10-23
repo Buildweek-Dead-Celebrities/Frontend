@@ -16,10 +16,10 @@ export const START_DELETION = "START_DELETION";
 export const DELETION_SUCCESS = "DELETION_SUCCESS";
 export const DELETION_FAILURE = "DELETION_FAILURE";
 
-// export for deleting results - delete request
-export const START_DELETION_SCORE = "START_DELETION_SCORE";
-export const DELETION_SCORE_SUCCESS = "DELETION_SCORE_SUCCESS";
-export const DELETION_SCORE_FAILURE = "DELETION_SCORE_FAILURE";
+// export for deleting celebrity - delete request
+export const CELEB_DELETE = "START_CELEB_DELETE";
+// export const CELEB_DELETE_SUCCESS = "CELEB_DELETE_SUCCESS";
+// export const CELEB_DELETE_FAILURE = "CELEB_DELETE_FAILURE";
 
 // export for quiz scores - get request
 export const START_QUIZ = "START_QUIZ";
@@ -45,12 +45,13 @@ export const PASSWORD_FAILURE = "PASSWORD_FAILURE";
 export const loginUser = loginInfo => {
   return dispatch => {
     dispatch({ type: START_LOGIN });
-    axiosWithAuth()
-      .post("/login", loginInfo)
+    return axios
+      .post("https://celeb-death-status.herokuapp.com/api/login", loginInfo)
       .then(response =>
         dispatch(
           { type: LOGIN_SUCCESS, payload: response.data},
-          localStorage.setItem("token", response.data.token)
+          localStorage.setItem("token", response.data.token),
+          localStorage.setItem('message', response.data.message)
         )
       )
       .catch(error =>
@@ -63,7 +64,7 @@ export const loginUser = loginInfo => {
 export const registerUser = registerInfo => {
   return dispatch => {
     dispatch({ type: START_REGISTERING });
-    axios
+    return axios
     .post("https://celeb-death-status.herokuapp.com/api/register", registerInfo)
     .then(response =>
       dispatch(
@@ -74,3 +75,33 @@ export const registerUser = registerInfo => {
       dispatch({ type: REGISTRATION_FAILURE, payload: error.response }))
   }
 }
+
+// this is the get request for celebrity data
+export const getCelebrity = celeb => {
+  return dispatch => {
+    dispatch({ type: START_CELEBRITY });
+    axios
+    .get('https://celeb-death-status.herokuapp.com/api/celebs/', celeb)
+    .then(response => 
+      dispatch(
+        {type: CELEBRITY_SUCCESS, payload: response.data}
+      )
+    )
+    .catch(error =>
+      dispatch({ type: CELEBRITY_FAILURE, payload: error.response}))
+  }
+}
+
+// this is to delete celebrity data
+// export const deleteCelebrity = celeb => {
+//   return dispatch => {
+//     dispatch({ type: CELEB_DELETE });
+//     axiosWithAuth()
+//     .delete(`https://celeb-death-status.herokuapp.com/api/celebs/${celeb.id}`)
+//     .then(response =>
+//       console.log("Celebrity has been deleted", response)
+//       )
+//     .catch(error => console.log(error.response)
+//     )
+//   }
+// }

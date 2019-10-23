@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { loginUser } from "../actions";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+
+
 
 const Login = props => {
   const [login, setLogin] = useState({ username: "", password: "" });
@@ -11,29 +14,46 @@ const Login = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    props.loginUser(login);
+    props.loginUser(login).then(()=> props.history.push('/dashboard'))
+    //  props.history.push('/dashboard')
     setLogin({ username: "", password: "" });
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          className="loginForm"
-          type="text"
-          name="username"
-          placeholder="name"
-          value={login.username}
-          onChange={handleChange}
-        />
-        <input className="loginForm" 
-        type="password" 
-        name="password" 
-        value={login.password} 
-        onChange={handleChange} 
-        />
-        <button type="submit">Submit</button>
-      </form>
+    <div className='pink'>
+
+      <div className='form'>
+
+        <h2 className='login'>Login</h2>
+
+        <form onSubmit={handleSubmit}>
+          <input
+            className="loginForm"
+            type="text"
+            name="username"
+            placeholder="Name"
+            value={login.username}
+            onChange={handleChange}
+          />
+
+          <br/>
+
+          <input 
+            className="loginForm" 
+            type="password" 
+            name="password" 
+            placeholder='Password'
+            value={login.password} 
+            onChange={handleChange} 
+          />
+
+          <br/>
+
+          <button type="submit" className='login-btn'>Submit</button>
+        </form>
+
+      </div>
+
     </div>
   );
 };
@@ -47,4 +67,4 @@ const mapStateToProps = state => {
 export default connect(
     mapStateToProps,
     { loginUser }
-)(Login);
+)(withRouter(Login));

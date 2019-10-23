@@ -4,9 +4,7 @@ import { START_LOGIN,
   START_REGISTERING, 
   REGISTRATION_SUCCESS, 
   REGISTRATION_FAILURE, 
-  START_DELETION_SCORE, 
-  DELETION_SCORE_SUCCESS, 
-  DELETION_SCORE_FAILURE, 
+  CELEB_DELETE, 
   START_QUIZ, 
   QUIZ_SUCCESS, 
   QUIZ_FAILURE,
@@ -24,6 +22,7 @@ const initialState = {
     loginData: {},
     registerData: {},
     quizScore: [],
+    message: "",
     celeb: [],
     isFetching: false,
     error: ""
@@ -31,6 +30,8 @@ const initialState = {
 
   //reducer takes in :state = initialState, action
 const reducer = (state = initialState, action) => {
+  console.log('login' ,initialState.loginData)
+  console.log('register', initialState.registerData)
     switch (action.type) {
 
       case START_LOGIN:
@@ -45,7 +46,8 @@ const reducer = (state = initialState, action) => {
           ...state,
           isFetching: false,
           error: '',
-          loginData: action.payload
+          loginData: action.payload,
+          message: action.payload.message
         }
 
       case LOGIN_FAILURE:
@@ -77,25 +79,25 @@ const reducer = (state = initialState, action) => {
           isFetching: false
         }
 
-      case START_DELETION_SCORE:
+      case CELEB_DELETE:
         return {
           ...state,
           isFetching: true,
           error: ''
         }
 
-      case DELETION_SCORE_SUCCESS:
-        return {
-          ...state,
-          quizScore: action.payload
-        }
+      // case DELETION_SCORE_SUCCESS:
+      //   return {
+      //     ...state,
+      //     quizScore: action.payload
+      //   }
       
-      case DELETION_SCORE_FAILURE:
-        return {
-          ...state,
-          error: action.payload,
-          isFetching: false
-        }
+      // case DELETION_SCORE_FAILURE:
+      //   return {
+      //     ...state,
+      //     error: action.payload,
+      //     isFetching: false
+      //   }
 
       case START_CELEBRITY:
         return {
