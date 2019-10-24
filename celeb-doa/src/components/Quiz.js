@@ -53,7 +53,7 @@ const Quiz = props => {
     border: 1px solid #AC3C3C;
     color: white;
     font-family: 'Catamaran', sans-serif;
-    font-size: 1.8rem;
+    font-size: 2rem;
     padding: 11px 32px;
     margin-top: 2%;
     outline: none;
@@ -160,14 +160,15 @@ const Quiz = props => {
       </div>
       <ButtonDiv>
         <Answer onClick={handleChanges} name="guess" value="Alive">
-          Alive
+        💗 Alive
         </Answer>
-        <Answer name="guess" value="Dead" onClick={handleChanges}>
-          Dead
+        
+        or<Answer name="guess" value="Dead" onClick={handleChanges}>
+          Dead 💀
         </Answer>
       </ButtonDiv>
       <CheckDiv>
-        <Check onClick={check} >Check</Check>
+        <Check onClick={check} > ✔️ </Check>
       </CheckDiv>
 
     </div>
