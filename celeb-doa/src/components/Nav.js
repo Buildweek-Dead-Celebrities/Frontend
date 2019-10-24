@@ -14,13 +14,13 @@ const Nav = (props) =>{
     }
 
     const NavDiv = styled.div`
-        background: #AC3C3C
+        background: #AC3C3C;
         padding: 1% 0;
     `
     const LinkDiv =styled.div`
         display: flex;
-        width: 48%;
-        justify-content: space-evenly;
+        width: 52%;
+        justify-content: space-between;
     `
 
     const Center = styled.div`
@@ -29,6 +29,12 @@ const Nav = (props) =>{
         display: flex;
         justify-content: space-between;
         align-items: center;
+    `
+    const LogoutButton = styled.button`
+      border: 0;
+      background: none;
+      ${LinkDiv}:hover & {
+        fill: rebeccapurple;
     `
 
 
@@ -51,9 +57,10 @@ const Nav = (props) =>{
         <h3 className='title'>Dead or Alive</h3>
       </div> 
       <LinkDiv>
-        <NavLink to='/quiz'>Quiz</NavLink>
-        <NavLink to='/dashboard'>Dashboard</NavLink>
-        <button onClick={()=> logout()}>Logout</button>{/* If user is signed in, a Logout Button will appear to Logout. Button was the only thing I could get to work? idk -b*/}
+        <NavLink className='link' to='/quiz'>Quiz</NavLink>
+        <NavLink className='link' to='/dashboard'>Dashboard</NavLink>
+        <NavLink className='link' to='/celebrity-list'>Update Celebrity</NavLink>
+        <LogoutButton className='link' onClick={()=> logout()}>Logout</LogoutButton>{/* If user is signed in, a Logout Button will appear to Logout. Button was the only thing I could get to work? idk -b*/}
       </LinkDiv>
     </Center>
   </NavDiv>
@@ -65,9 +72,9 @@ const Nav = (props) =>{
         <h3 className='title'>Dead or Alive</h3>
       </div>
       <LinkDiv>
-        <NavLink to='/quiz'>Quiz</NavLink>
-        <NavLink to='/sign-up'>Sign Up</NavLink> {/* If user is Logged in, SignUp dissappears and gets replaced w/ dashboard. -b*/}
-        <NavLink to='/login'>Login</NavLink>
+        <NavLink className='link' to='/quiz'>Quiz</NavLink>
+        <NavLink className='link' to='/sign-up'>Sign Up</NavLink> {/* If user is Logged in, SignUp dissappears and gets replaced w/ dashboard. -b*/}
+        <NavLink className='link' to='/login'>Login</NavLink>
       </LinkDiv>
     </Center>
   </NavDiv>
