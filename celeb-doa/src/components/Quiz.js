@@ -138,13 +138,12 @@ const Quiz = props => {
 
       // this would be the put request to push score to user
       // pop up modal to display end score
-      scorePut();
-
+      localStorage.getItem('token') ?
+      scorePut() :
+      
       console.log("this is from clicking - quiz has ended")
       props.history.push("/ScoreModal")
       props.setCount(50);
-
-
   }
 
   const handleChanges = e => {
