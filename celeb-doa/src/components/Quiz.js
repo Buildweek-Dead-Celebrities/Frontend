@@ -67,9 +67,9 @@ const Quiz = props => {
       score: score
     }
     axiosWithAuth()
-    .put(`https://cors-anywhere.herokuapp.com/http://celeb-death-status.herokuapp.com/api/protected/users/${props.id}`, user)
-    .then( res => { console.log(res)
-    })
+    .put(`https://cors-anywhere.herokuapp.com/http://celeb-death-status.herokuapp.com/api/protected/users/${props.data}`, user)
+    .then( res =>  console.log(res.data.score)
+    )
     .catch( res => console.log(res))
   }
 
@@ -78,8 +78,8 @@ const Quiz = props => {
       // this would be the put request to push score to user
       // pop up modal to display end score
       scorePut();
-      console.log("this is from clicking - quiz has ended")
-      props.history.push("/dashboard")
+      console.log("Quiz has ended")
+      props.history.push("/ScoreModal")
       props.setCount(150);
 
   }
@@ -92,7 +92,7 @@ const Quiz = props => {
       <div key={celeb.id}>
         <h1>{score}</h1>
         <h1>{celeb.name}</h1>
-        <img src={celeb.imageurl} />
+        <img src={celeb.imageurl} alt="Celebrity"/>
         <h4>{celeb.info}</h4>
       </div>
       <button onClick={handleChanges} name="guess" value="Alive">

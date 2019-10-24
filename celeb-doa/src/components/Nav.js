@@ -49,7 +49,7 @@ const Nav = (props) =>{
       <div>
         <h1 className='title'>Celebrity?</h1>
         <h3 className='title'>Dead or Alive</h3>
-      </div>
+      </div> 
       <LinkDiv>
         <NavLink to='/quiz'>Quiz</NavLink>
         <NavLink to='/dashboard'>Dashboard</NavLink>
