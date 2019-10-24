@@ -35,7 +35,6 @@ const Dashboard = (props) => {
             <h3>🗨 ❝ {localStorage.getItem('message')} ❞ </h3>
             <p> Score Cards will be Displayed here</p>
             <p> User can Also Delete their account from here.</p>
-
             <button> <Link to='/celebrity-list'>Update Celebrity List</Link> </button><br/>
             
             <Button color="danger" onClick={toggle}>Delete My Account</Button>
