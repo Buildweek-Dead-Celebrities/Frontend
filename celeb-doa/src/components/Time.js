@@ -9,10 +9,11 @@ const Time = (props) => {
 
     const Timer = styled.h2`
         font-size: 3rem;
-        color: ${time <= 50 ? 'red' : 'green' };
+        color: ${time <= 10 ? 'red' : 'green' };
         background-color: white;
         border-radius: 50px;
-        font-family: font-family: 'Catamaran', sans-serif;
+        font-family: 'Catamaran', sans-serif;
+        margin: 0;
     `
 
     useEffect(() => {

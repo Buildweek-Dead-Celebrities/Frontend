@@ -21,9 +21,6 @@ const Dashboard = (props) => {
         .catch(err=> console.log(err))
     }
 
-
-    const getData = () =>{
-
         axiosWithAuth()
         .get(`https://cors-anywhere.herokuapp.com/http://celeb-death-status.herokuapp.com/api/protected/users/${props.data}`)
         .then(resp => {
@@ -33,7 +30,7 @@ const Dashboard = (props) => {
 
         })
         .catch(err => console.log(err))
-    } 
+    
 
     const confirmationModal = (props) => {
         const {
