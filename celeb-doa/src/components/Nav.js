@@ -19,8 +19,8 @@ const Nav = (props) =>{
     `
     const LinkDiv =styled.div`
         display: flex;
-        width: 48%;
-        justify-content: space-evenly;
+        width: 52%;
+        justify-content: space-between;
     `
 
     const Center = styled.div`
@@ -29,6 +29,12 @@ const Nav = (props) =>{
         display: flex;
         justify-content: space-between;
         align-items: center;
+    `
+    const LogoutButton = styled.button`
+      border: 0;
+      background: none;
+      ${LinkDiv}:hover & {
+        fill: rebeccapurple;
     `
 
 
@@ -53,7 +59,8 @@ const Nav = (props) =>{
       <LinkDiv>
         <NavLink className='link' to='/quiz'>Quiz</NavLink>
         <NavLink className='link' to='/dashboard'>Dashboard</NavLink>
-        <button className='link' onClick={()=> logout()}>Logout</button>{/* If user is signed in, a Logout Button will appear to Logout. Button was the only thing I could get to work? idk -b*/}
+        <NavLink className='link' to='/celebrity-list'>Update Celebrity</NavLink>
+        <LogoutButton className='link' onClick={()=> logout()}>Logout</LogoutButton>{/* If user is signed in, a Logout Button will appear to Logout. Button was the only thing I could get to work? idk -b*/}
       </LinkDiv>
     </Center>
   </NavDiv>
