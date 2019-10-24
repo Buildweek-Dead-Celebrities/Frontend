@@ -15,6 +15,7 @@ import Time from "./components/Time";
 import PrivateLoginRoute from "./components/PrivateLoginRoute";
 import Dashboard from "./components/Dashboard";
 import UpdateCelebrityList from "./components/UpdateCelebrityList";
+import ScoreModal from "./components/ScoreModal";
 
 import "./App.css";
 
@@ -27,6 +28,7 @@ function App() {
     <Router>
       <div className="App">
         <Nav />
+
         <div className="pink">
           <Route
             exact
@@ -55,6 +57,7 @@ function App() {
           path="/update-celebrity/:id"
           component={UpdateCelebrityList}
         />
+
       </div>
     </Router>
   );
