@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState ,useEffect} from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import {Link} from 'react-router-dom';
 import { connect } from "react-redux";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; //CSS for Modal! 
 
 const Dashboard = (props) => {
+
+
+    const [score , setScore] = useState();
 
      const handleDelete = (userId ) => {
          console.log(props.history.length)
@@ -16,6 +20,17 @@ const Dashboard = (props) => {
         props.history.push('/')) 
         .catch(err=> console.log(err))
     }
+
+        axiosWithAuth()
+        .get(`https://cors-anywhere.herokuapp.com/http://celeb-death-status.herokuapp.com/api/protected/users/${props.data}`)
+        .then(resp => {
+            const data = resp.data.score;
+            setScore(data)
+            console.log(data);
+
+        })
+        .catch(err => console.log(err))
+    
 
     const confirmationModal = (props) => {
         const {
@@ -32,7 +47,9 @@ const Dashboard = (props) => {
             <h3>🗨 ❝ {localStorage.getItem('message')} ❞ </h3>
             <p> Score Cards will be Displayed here</p>
             <p> User can Also Delete their account from here.</p>
-
+            <p>{score}</p>
+            <button> <Link to='/celebrity-list'>Update Celebrity List</Link> </button><br/>
+            
             <Button color="danger" onClick={toggle}>Delete My Account</Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Confirm Deletion</ModalHeader>
@@ -51,7 +68,7 @@ const Dashboard = (props) => {
 
 const mapStateToProps = state => {
     return {
-        data: state.loginData
+        data: state.loginData.id
     }
 }
 
