@@ -21,8 +21,6 @@ const Dashboard = (props) => {
         .catch(err=> console.log(err))
     }
 
-
-    
         axiosWithAuth()
         .get(`https://cors-anywhere.herokuapp.com/http://celeb-death-status.herokuapp.com/api/protected/users/${props.data}`)
         .then(resp => {
@@ -32,7 +30,7 @@ const Dashboard = (props) => {
 
         })
         .catch(err => console.log(err))
-
+    
 
     const confirmationModal = (props) => {
         const {
@@ -59,7 +57,7 @@ const Dashboard = (props) => {
                 Are you SURE that you want to Delete your account? Make sure you're sure! There's no revertions.
                 </ModalBody>
                 <ModalFooter>
-                <Button color="primary" onClick={() => handleDelete(props.data.id)}>Delete My Account!</Button>{' '}
+                <Button color="primary" onClick={() => handleDelete(props.data)}>Delete My Account!</Button>{' '}
                 <Button color="secondary" onClick={toggle}>Cancel, I'm Sorry</Button>
                 </ModalFooter>
             </Modal>
