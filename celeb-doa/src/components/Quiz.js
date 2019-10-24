@@ -128,9 +128,9 @@ const Quiz = props => {
       score: score
     }
     axiosWithAuth()
-    .put(`https://cors-anywhere.herokuapp.com/http://celeb-death-status.herokuapp.com/api/protected/users/${props.id}`, user)
-    .then( res => { console.log(res)
-    })
+    .put(`https://cors-anywhere.herokuapp.com/http://celeb-death-status.herokuapp.com/api/protected/users/${props.data}`, user)
+    .then( res =>  console.log(res.data.score)
+    )
     .catch( res => console.log(res))
   }
 
@@ -139,9 +139,11 @@ const Quiz = props => {
       // this would be the put request to push score to user
       // pop up modal to display end score
       scorePut();
+
       console.log("this is from clicking - quiz has ended")
       props.history.push("/dashboard")
       props.setCount(50);
+
 
   }
 
@@ -149,6 +151,7 @@ const Quiz = props => {
     setGuess({ [e.target.name]: e.target.value });
   };
   return (
+
     <div className='pink'>
       <div key={celeb.id} className='form'>
         <Score>{score}/20</Score>
@@ -157,6 +160,7 @@ const Quiz = props => {
           <h1>{celeb.name}</h1>
           <h4 className='celeb-info'>{celeb.info}</h4>
         </div>
+
       </div>
       <ButtonDiv>
         <Answer onClick={handleChanges} name="guess" value="Alive">
@@ -182,25 +186,4 @@ const mapStateToProps = state => {
   }
 }
 export default connect(mapStateToProps,{})(withRouter(Quiz));
-
-// useEffect(() => {
-//     axios
-//     .get('https://celeb-death-status.herokuapp.com/api/celebs/')
-//     .then(response => {
-//         setCelebs(response.data)
-//     })
-//     .catch(error => (console.log(error)))
-// }, [])
-//     return(
-//         <div>
-//           {celebs.map(celeb =>
-//               <div key={celeb.id}>
-//                  <h1>{celeb.name}</h1>
-//                  <h4>{celeb.info}</h4>
-//                  <img src={celeb.imageurl} />
-//               </div>
-//           )}
-//         </div>
-//     )
-// }
 
