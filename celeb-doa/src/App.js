@@ -16,7 +16,7 @@ import CelebrityList from "./components/CelebrityList";
 
 function App() {
 
-  const [count, setCount] = useState(150);
+  const [count, setCount] = useState(50);
 
 
   return (
@@ -24,8 +24,11 @@ function App() {
       <div className="App">
 
         <Nav />
+        <div className='pink'>
+
         <Route exact path='/quiz' render={() => <Time  count={setCount} countDown={count} />} />
         <Route exact path='/quiz' render={() => <Quiz count={count} setCount={setCount}/>} /> {/* The Home page of the app */}
+        </div>
         <Route exact path="/sign-up" component={SignUp} />{/* The Login page of the App */}
         <Route exact path="/login" render={props =>{ return <Login {...props} />}} />
         <PrivateLoginRoute exact path='/dashboard' component={Dashboard}/>
