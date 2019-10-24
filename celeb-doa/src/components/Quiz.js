@@ -53,7 +53,7 @@ const Quiz = props => {
     border: 1px solid #AC3C3C;
     color: white;
     font-family: 'Catamaran', sans-serif;
-    font-size: 1.8rem;
+    font-size: 2rem;
     padding: 11px 32px;
     margin-top: 2%;
     outline: none;
@@ -129,8 +129,8 @@ const Quiz = props => {
     }
     axiosWithAuth()
     .put(`https://cors-anywhere.herokuapp.com/http://celeb-death-status.herokuapp.com/api/protected/users/${props.id}`, user)
-    .then( res => { console.log(res)
-    })
+    .then( res =>  console.log(res.data.score)
+    )
     .catch( res => console.log(res))
   }
 
@@ -138,17 +138,19 @@ const Quiz = props => {
 
       // this would be the put request to push score to user
       // pop up modal to display end score
-      scorePut();
+      localStorage.getItem('token') ?
+      scorePut() :
+      
       console.log("this is from clicking - quiz has ended")
-      props.history.push("/dashboard")
+      props.history.push("/ScoreModal")
       props.setCount(50);
-
   }
 
   const handleChanges = e => {
     setGuess({ [e.target.name]: e.target.value });
   };
   return (
+
     <div className='pink'>
       <div key={celeb.id} className='form'>
         <Score>{score}/20</Score>
@@ -157,17 +159,19 @@ const Quiz = props => {
           <h1>{celeb.name}</h1>
           <h4 className='celeb-info'>{celeb.info}</h4>
         </div>
+
       </div>
       <ButtonDiv>
         <Answer onClick={handleChanges} name="guess" value="Alive">
-          Alive
+        💗 Alive
         </Answer>
-        <Answer name="guess" value="Dead" onClick={handleChanges}>
-          Dead
+        
+        or<Answer name="guess" value="Dead" onClick={handleChanges}>
+          Dead 💀
         </Answer>
       </ButtonDiv>
       <CheckDiv>
-        <Check onClick={check} >Check</Check>
+        <Check onClick={check} > ✔️ </Check>
       </CheckDiv>
 
     </div>
@@ -181,25 +185,4 @@ const mapStateToProps = state => {
   }
 }
 export default connect(mapStateToProps,{})(withRouter(Quiz));
-
-// useEffect(() => {
-//     axios
-//     .get('https://celeb-death-status.herokuapp.com/api/celebs/')
-//     .then(response => {
-//         setCelebs(response.data)
-//     })
-//     .catch(error => (console.log(error)))
-// }, [])
-//     return(
-//         <div>
-//           {celebs.map(celeb =>
-//               <div key={celeb.id}>
-//                  <h1>{celeb.name}</h1>
-//                  <h4>{celeb.info}</h4>
-//                  <img src={celeb.imageurl} />
-//               </div>
-//           )}
-//         </div>
-//     )
-// }
 
