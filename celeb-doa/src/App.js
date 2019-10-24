@@ -35,6 +35,7 @@ function App() {
             path="/quiz"
             render={() => <Time count={setCount} countDown={count} />}
           />
+          <Route path="/ScoreModal" component={ScoreModal} />
           <Route
             exact
             path="/quiz"

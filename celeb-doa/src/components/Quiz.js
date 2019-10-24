@@ -128,7 +128,7 @@ const Quiz = props => {
       score: score
     }
     axiosWithAuth()
-    .put(`https://cors-anywhere.herokuapp.com/http://celeb-death-status.herokuapp.com/api/protected/users/${props.data}`, user)
+    .put(`https://cors-anywhere.herokuapp.com/http://celeb-death-status.herokuapp.com/api/protected/users/${props.id}`, user)
     .then( res =>  console.log(res.data.score)
     )
     .catch( res => console.log(res))
@@ -141,7 +141,7 @@ const Quiz = props => {
       scorePut();
 
       console.log("this is from clicking - quiz has ended")
-      props.history.push("/dashboard")
+      props.history.push("/ScoreModal")
       props.setCount(50);
 
 
